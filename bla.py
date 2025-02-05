@@ -76,7 +76,7 @@ while True:
         message = "Seu destino se sela, tudo se acalma..."
 
     # Desenha o fundo (preto para o clima sombrio)
-    screen.fill(WHITE)
+    screen.fill(BLACK)
 
     # Desenha os status do jogador e do inimigo
     draw_text(f"Você: {player_hp} HP", font, GREEN, screen, 20, 20)
