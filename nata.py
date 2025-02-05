@@ -1,6 +1,9 @@
 import random
 
 inv=[]
+def Fim():
+  print("FIM")
+
 
 def inicio():
   print("voce acorda em uma clareira tudo é extranhamente familiar")
@@ -13,8 +16,8 @@ def inicio():
 def caverna():
   global inv
   if "tocha" not in inv:
-    print("ao dexer a colina voce chega a entrada da caverna")
-  escolha=input("a caverna esta escura e a pedasos de madeira quebrados por toda a entrada, oque fazer: ")
+    print("ao deixar a colina voce chega a entrada da caverna")
+  escolha=input("a caverna esta escura e á pedasos de madeira quebrados por toda a entrada, oque fazer: ")
 
   if escolha.lower()=="madeira":
     if "tocha" in inv :
@@ -27,10 +30,22 @@ def caverna():
       caverna()
   elif escolha.lower()=="caverna":
     if "tocha" in inv:
-      print("voce adentra nas entranhas da caverna")
+      print("com a tocha iluminando seu camino voce adentra nas entranhas da caverna")
+      cavernaD()
+    else:
+      print("a escuridão esmaga seu ser, voce hesita em proceguir")
+      caverna()
 
-    
-     
+def cavernaD():
+  print("detro da caverna so se pode escutar o som do ento vind da entrada que a cada passo fica mais distante e uma goteira insesante que vem de varios quantos da caverna")
+  escolha=input("voce quer continuar ou voltar")
+
+  if escolha.lower()=="continuar":
+    print("voce continua cai em um buraco e algo vem para te atacar")
+    luta_limbo()
+  elif escolha.lower()=="voltar":
+    print("voce sai da caverna e vive vivo por toda a sua vida")
+    Fim()
 
 
 def luta_limbo():
