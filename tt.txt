@@ -1,0 +1,53 @@
+class TabelaSA1:
+    def __init__(self, connection_string):
+        self.conn = pyodbc.connect(connection_string)
+        self.df = None
+
+    def carregar_dados(self):
+        query = "SELECT * FROM SA1"
+        self.df = pd.read_sql(query, self.conn)
+    
+    def tratar_dados(self):
+        if self.df is not None:
+            # Exemplo de tratamento genérico: remover espaços em branco dos nomes das colunas
+            self.df.columns = [col.strip() for col in self.df.columns]
+            # Aqui você pode adicionar outros tratamentos (conversões, filtros, etc.)
+    
+    def gerar_html(self):
+        if self.df is not None:
+            return self.df.to_html(classes="tabela-sa1", index=False)
+        return ""
+
+# Uso da classe
+connection_string = "sua_connection_string"
+tabela = TabelaSA1(connection_string)
+tabela.carregar_dados()
+tabela.tratar_dados()
+html_table = tabela.gerar_html()
+
+# Agora, html_table contém a tabela tratada em HTML pronta para ser incorporada à sua página
+print(html_table)
+
+###################################################################################################################################################################
+
+
+import pandas as pd
+import pyodbc
+
+# Conectando ao banco
+conn = pyodbc.connect("sua_connection_string")
+
+# Executando a query e carregando os dados em um DataFrame
+query = "SELECT * FROM SA1"
+df = pd.read_sql(query, conn)
+
+# Tratamento genérico das colunas (exemplo: remover espaços em branco)
+df.columns = [col.strip() for col in df.columns]
+
+# Você pode fazer outros tratamentos necessários aqui, como conversões de tipo ou formatações
+
+# Gerando o HTML da tabela
+html_table = df.to_html(classes="tabela-sa1", index=False)
+
+# Agora, html_table é uma string HTML que você pode inserir na sua página web
+print(html_table)
